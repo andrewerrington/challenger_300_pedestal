@@ -33,6 +33,64 @@ SYSTEMS TEST is an eight-position latching rotary switch, with 36° between posi
 
 
 ## ENGINE
+All buttons except IGNITION and MACH HOLD have covers over them. In the simulator they can not be pressed without lifting the covers. In software, the button
+state can be altered by writing to the dataref regardless of the state of the cover.
+
+L ENGINE FIRE
+R ENGINE FIRE
+`cl300/fire_engn_l_h` and `cl300/fire_engn_l_h`  
+  
+0 - OFF  
+1 - FIRE  
+
+`cl300/fire_engn_l` and `cl300/fire_engn_r` is the brightness of the indicator LED in the button (showing "FIRE")
+
+
+APU FIRE
+`cl300/fire_apu_h`
+  
+0 - OFF  
+1 - FIRE  
+
+`cl300/fire_apu` is the brightness of the indicator LED in the button (showing "FIRE")
+
+
+FIRE EXT 1 & 2
+`cl300/fire_ext_1_h` and `cl300/fire_ext_2_h`  
+  
+0 - OFF  
+1 - ARMED 
+
+`cl300/fire_ext_1` and `cl300/fire_ext_2` is the brightness of the indicator LED in the button (showing "ARMED")
+
+
+AUTO APR
+`cl300/fire_autoapr_h`
+  
+0 - OFF  
+1 - ON  
+
+`cl300/fire_autoapr` is the brightness of the indicator LED in the button (showing "OFF"). It is lit when `cl300/fire_autoapr_h` is 0.  
+
+
+MACH HOLD
+`cl300/engn_mach_h`
+
+0 - OFF  
+1 - ON  
+
+`cl300/engn_mach` is the brightness of the indicator LED in the button (showing "ON").  
+
+
+IGNITION
+`cl300/engn_ign_h`
+
+0 - OFF  
+1 - ON  
+
+`cl300/engn_ign` is the brightness of the indicator LED in the button (showing "ON").  
+
+
 L STARTER and R STARTER are three position rotary switches, with 45° between positions. Centre is OFF, with momentary action to the left and right.  
 `cl300/en_starter_l` and `cl300/en_starter_r` report the switch state, and can be set by writing to the dataref:  
 0 - CRANK  
