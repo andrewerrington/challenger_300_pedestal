@@ -28,12 +28,14 @@ SYSTEMS TEST is an eight-position latching rotary switch, with 36° between posi
 7 - TAWS  
 
 `cl300/test_push` reports the switch state, and can be changed by writing to the dataref. To activate the test the switch must be pressed for a few seconds.
-1 - button is pressed  
 0 - button is not pressed  
+1 - button is pressed  
+
+There are ten possible positions, but a stop prevents movement anticlockwise from OFF or further clockwise from TAWS.  
 
 
 ## ENGINE
-All buttons except IGNITION and MACH HOLD have covers over them. In the simulator they can not be pressed without lifting the covers. In software, the button
+All buttons except IGNITION and MACH HOLD have covers over them. In X-Plane they can not be pressed without lifting the covers. In software, the button
 state can be altered by writing to the dataref regardless of the state of the cover.
 
 L ENGINE FIRE
@@ -43,7 +45,7 @@ R ENGINE FIRE
 0 - OFF  
 1 - FIRE  
 
-`cl300/fire_engn_l` and `cl300/fire_engn_r` is the brightness of the indicator LED in the button (showing "FIRE")
+`cl300/fire_engn_l` and `cl300/fire_engn_r` is the brightness of the indicator LED in each button (showing "FIRE")
 
 
 APU FIRE
@@ -98,11 +100,23 @@ L STARTER and R STARTER are three position rotary switches, with 45° between po
 2 - START  
 
 AUTO SYNC is a three-position latching rotary switch, with 45° between positions.  
-sim/cockpit2/switches/jet_sync_mode reports the switch state, and can be set by writing to the dataref:  
+`sim/cockpit2/switches/jet_sync_mode` reports the switch state, and can be set by writing to the dataref:  
 0 - OFF  
 1 - N1  
 2 - N2
 
-EVENT is not supported in the simulator, but is connected to an input in the simulator hardware.
+EVENT is not supported in X-Plane, but is connected to an input in the simulator hardware.
 
+
+## LG PULL
+This handle can be pulled up about six inches against a spring until it latches. In X-Plane it moves up by a smaller amount. To stow the handle press
+the button in the centre, which releases the latch. The spring will pull the handle down, so it is necessary to hold the handle and allow it to return
+slowly.
+
+`cl300/lg_man` is the position of the LG handle:  
+0 - DOWN (stowed)  
+1 - UP (pulled out)  
+
+A microswitch at the base of the shaft signals the position to X-Plane. When fully down, the switch is engaged. The switch is disengaged in any other position,
+even if the handle is not latched.
 
